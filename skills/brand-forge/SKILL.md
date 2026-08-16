@@ -17,8 +17,8 @@ This package is brand-neutral by design: it ships no other company's identity, a
 
 ## The shape of the run
 
-1. **Intake** — ingest the reference, and ask about purpose and tone if it doesn't answer them.
-2. **Three divergent directions** → **stop for a choice**.
+1. **Intake** — ingest the reference, and ask about purpose, tone and **mandate** if it doesn't answer them.
+2. **Three divergent directions** → **stop for a choice**. *Skipped when the mandate is formalisation.*
 3. **Brand core, tone of voice, visual foundations** → **stop for approval**.
 4. **Fill the pack** from `templates/brand-pack/`, generate what is derived, validate the logo.
 5. **Ship** — PDF, ZIP, install line.
@@ -38,7 +38,9 @@ Both are gates, not reports: they exit non-zero when the pack is not fit to ship
 
 ## The three rules that make it worth paying for
 
-**Three directions, genuinely different.** Never present one. And never present three variations of the same idea — any two directions must differ on at least four structural axes (density, saturation, layout structure, type energy, graphic device, temperature). The method has the check: run it and show the result, so the divergence is visible rather than claimed.
+**Ask what the mandate is before working.** A reference containing a logo is ambiguous: new identity, partial lock, or formalisation of something already approved. If it is formalisation, the three directions are *wrong* — the client already chose, and offering alternatives ignores the brief. Never infer this from how polished the reference looks.
+
+**Three directions, genuinely different.** When they apply: never present one, and never present three variations of the same idea — any two must differ on at least four structural axes (density, saturation, layout structure, type energy, graphic device, temperature). The method has the check: run it and show the result, so the divergence is visible rather than claimed.
 
 **Two hard stops.** After the directions, and after the written system. Producing a full package on a direction nobody chose wastes the client's money and yours. The exception is an explicit non-interactive request (`--full`, `cost_ack=proceed`) — that waives the review stops, never the intake questions.
 

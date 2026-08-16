@@ -24,16 +24,38 @@ Accept anything: screenshots, logos, moodboards, competitor sites, a paragraph o
 - **Visual cues** (if visual): dominant hues, contrast level, density, geometry vs organic, texture, motion hints. If you have file access, sample the image's actual pixels (e.g. via code) for dominant colors instead of eyeballing them — this is the difference between a guessed hex and a real one, and palette-level precision depends on it.
 - **Verbal cues** (if textual): vocabulary, sentence length, person (noi/tu/lei), recurring metaphors.
 
-**Two things almost always need to be asked, not guessed, because everything downstream depends on them:**
+**Three things almost always need to be asked, not guessed, because everything downstream depends on them:**
 1. **What the brand is actually for** — not just "a startup" but what it does, for whom, and in what category. A logo or moodboard alone rarely answers this.
 2. **The tone of voice it should have** — formal or informal, technical or warm, playful or serious, calm or loud. A visual reference barely hints at this; a text reference may state it directly or not at all.
-If either is unclear from the reference, stop and ask — 3–5 sharp, specific questions (purpose/audience, tone, one competitor to differ from, one word the brand must own, language of the copy), not a generic intake form. It's fine to also ask fewer questions if the reference already answers some of them — don't re-ask what's already clear. Only commit to visual and verbal choices once these are answered, or the user explicitly says to use your best judgment.
+3. **What the mandate is** — see below. This one decides whether Step 2 runs at all, so ask it before doing any work, not after.
+
+If any of these is unclear from the reference, stop and ask — 3–5 sharp, specific questions (mandate, purpose/audience, tone, one competitor to differ from, one word the brand must own, language of the copy), not a generic intake form. It's fine to ask fewer if the reference already answers some — don't re-ask what's already clear. Only commit to visual and verbal choices once these are answered, or the user explicitly says to use your best judgment.
+
+### The mandate question — ask it first
+
+A reference that already contains a logo is ambiguous, and the two readings lead to opposite work:
+
+- **New identity.** Nothing is fixed. Step 2 runs in full.
+- **Partial lock.** Some elements stay — usually the logo or the mark — and the rest is open. Step 2 runs, but on the free axes only: name the locked axis and diverge on four of the remainder.
+- **Formalisation.** The identity is approved and the client is buying the *system*, not the exploration. **Step 2 does not run at all** — presenting three alternatives to someone who already chose is not thoroughness, it is ignoring the brief. Go straight to Step 3, treating the existing identity as the chosen direction, and spend the effort on what is genuinely missing: the rules the board never states (text colour, contrast, grid, motion, voice) and the parts that make it usable rather than pretty.
+
+Never infer the mandate from the richness of the reference. A polished board can mean "formalise this" or "here's the mood, now go" — only the client knows which.
+
+### When the reference isn't a file
+
+The method assumes you can sample the image's pixels. Often you cannot: the reference arrives pasted into the conversation, not as a file on disk. In that case:
+
+- If the board **states its hex values**, use those. They are the brand owner's declared intent and beat anything sampled — a screenshot is compressed and colour-shifted, sampling it can be *less* accurate than reading the label.
+- If it states none, describe the colours you see, say explicitly that you are estimating from a compressed image, and ask for the source file or the hex list before committing anything downstream to those values.
+- Either way, say which of the two happened. A palette read off a label and a palette sampled from pixels are not the same evidence, and the client should know which one their brand rests on.
 
 Be upfront about what can't be reliably reconstructed from a reference alone: an exact typeface can't be "read off" a screenshot with certainty — identify the closest real, licensable family (so the deliverable stays usable) and say so; a complex logo in an image can't be vectorized identically — redraw simple geometric marks in SVG, and for anything more complex write a precise designer/image-gen brief instead of guessing a result.
 
 ## Step 2 — Three divergent directions
 
-Never present one direction. Produce **three**, each with: a style name, a palette (hex), a type pairing, a one-line layout stance, a sample headline in that voice, and a description of its graphic device.
+**Skip this step entirely if the mandate is formalisation.** Go to Step 3 with the existing identity as the chosen direction.
+
+Otherwise: never present one direction. Produce **three**, each with: a style name, a palette (hex), a type pairing, a one-line layout stance, a sample headline in that voice, and a description of its graphic device.
 
 ### The divergence rule
 
@@ -50,7 +72,9 @@ Three variations of the same idea are worth less than one idea. Any two of the t
 
 **This is falsifiable, so verify it before presenting.** For each of the three pairs (A-B, A-C, B-C), name the axes on which they differ. If a pair differs on fewer than four, they are the same direction wearing different colors — throw one away and generate a genuinely different one. Show this check in the output as a short table; a reviewer must be able to see the divergence, not take your word for it.
 
-Deliberate exception: if the intake constrains an axis hard (an existing logo fixes the graphic device, a regulated sector forbids a chromatic palette), say which axis is locked and why, then diverge on four of the remaining ones.
+Deliberate exception: if the intake constrains an axis hard (an existing logo fixes the graphic device, a regulated sector forbids a chromatic palette), say which axis is locked and why, then diverge on four of the remaining ones. With one axis locked, five remain — give each direction a *different value* on four of them and every pair clears the threshold automatically.
+
+When the graphic device is the locked axis, the directions do not differ in the mark. They differ in **how the mark is made to live**: multiplied into a system, used once as a signature, or made the centre everything orbits. Say so explicitly, or the client reads three near-identical proposals.
 
 ### → Stop 1
 Present the three, state your recommendation and the reason in one sentence, and wait. Do not begin Step 3 on an unchosen direction.
