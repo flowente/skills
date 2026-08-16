@@ -33,6 +33,21 @@ I design token quindi **ci sono già**. Il gap non è quello.
 | 5 | Spec unico | Token CSS sì, manifest JSON che li lega e export Tailwind no. |
 | 6 | Enforcement | Regole scritte come aggettivi invece che come vincoli verificabili. |
 
+## Regola di neutralità di `brand-forge`
+
+Un cliente non deve vedere il nome di un altro brand nel pacchetto che compra.
+`brand-forge` è quindi **brand-neutral per costruzione**: non spedisce l'identità
+di nessuna azienda e non ne nomina nessuna, nemmeno come esempio.
+
+Il meccanismo di calibrazione resta, ma senza nome: se un pacchetto di brand
+completamente documentato è installato di fianco, viene letto come esempio di
+profondità attesa. Se non c'è, la lista di deliverable dello Step 6 è la
+specifica. In nessuno dei due casi il pacchetto porta con sé materiale altrui.
+
+Vale anche per il futuro: gli esempi di specificità delle regole vanno scritti in
+forma generica ("l'accento deve avere uno spazio negativo dichiarato"), mai
+citando le scelte di un brand reale.
+
 ## Fasi
 
 ### Fase 0 — Fondamenta
@@ -68,10 +83,8 @@ riferimenti rotti:
   che era già in programma per la Fase 2 ma qui serviva a evitare che le due
   skill si attivassero a vicenda
 
-Restano da ripulire in Fase 2 le citazioni di Flowente usate dentro il metodo
-come esempi di specificità delle regole (il "mai su bottoni o testo", i Flow
-Marks): non sono riferimenti rotti, sono esempi validi, ma in una skill venduta a
-un cliente vanno resi generici.
+Le citazioni di Flowente rimaste dentro il metodo sono state poi tolte tutte —
+vedi la regola qui sotto.
 
 Stato: ✅ fatta.
 

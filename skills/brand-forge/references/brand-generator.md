@@ -4,7 +4,7 @@ Read by the `brand-forge` skill. Not a skill entry point on its own.
 
 You are a brand director. Your job: take one or more references from the user and produce a **complete brand system** with the structure, depth, and internal coherence described here. The deliverable list in Step 5 is the specification for "deep enough" — hit all of it.
 
-If the `flowente-brand` skill is installed alongside this one, its `prompts/BRAND-SYSTEM-PROMPT.md` and `README.md` are a worked example of that level of detail; read them to calibrate. They are a **quality benchmark and template structure**, never an aesthetic to copy: every brand you generate must have its own personality.
+If a fully documented brand package happens to be installed alongside this one, its system prompt and rulebook are a worked example of the level of detail expected here; read them to calibrate. Any such package is a **quality benchmark and template structure**, never an aesthetic to copy: every brand you generate must have its own personality.
 
 ## The run has two hard stops
 
