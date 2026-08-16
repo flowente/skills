@@ -1,0 +1,37 @@
+/* Flowente — generalized layout grid
+   NOT extracted from the source repo (the site only ships fixed values for
+   the homepage: max-width 1160px, 40px side padding). This file generalizes
+   those numbers into a reusable column grid so new layouts (slides, UI
+   mockups, decks) can share the same rhythm instead of re-deriving it each
+   time. Treat as a proposed addition — verify against flowente-site if a
+   canonical grid is ever added there. */
+:root{
+  /* Desktop / default (matches the homepage content column) */
+  --grid-columns:12;
+  --grid-gutter:24px;
+  --grid-margin:40px;      /* = existing --max-content side padding */
+  --grid-max-width:1160px; /* = existing --max-content */
+
+  /* Breakpoints — proposed, not present in source */
+  --bp-sm:640px;   /* mobile */
+  --bp-md:1024px;  /* tablet */
+  --bp-lg:1160px;  /* desktop, matches --grid-max-width */
+}
+@media (max-width:1023px){
+  :root{ --grid-columns:8; --grid-gutter:20px; --grid-margin:32px; }
+}
+@media (max-width:639px){
+  :root{ --grid-columns:4; --grid-gutter:16px; --grid-margin:20px; }
+}
+/* Utility: a content-column wrapper + a CSS-grid row for arbitrary layouts
+   (slides, mockups) that still respects the brand's rhythm. */
+.grid-wrap{
+  max-width:var(--grid-max-width);
+  margin-inline:auto;
+  padding-inline:var(--grid-margin);
+}
+.grid-row{
+  display:grid;
+  grid-template-columns:repeat(var(--grid-columns),1fr);
+  gap:var(--grid-gutter);
+}

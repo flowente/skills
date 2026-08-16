@@ -1,0 +1,15 @@
+/* Flowente — typography tokens */
+:root{
+--font-space-grotesk:"Space Grotesk",sans-serif;
+--font-inter:"Inter",-apple-system,"Segoe UI",Roboto,sans-serif;
+--font-jetbrains:"JetBrains Mono",ui-monospace,monospace;
+/* Semantic aliases */
+--font-display:var(--font-space-grotesk);
+--font-sans:var(--font-inter);
+--font-mono:var(--font-jetbrains);
+/* Display tracking: tighter as size grows */
+--tracking-display-xl:-0.04em; /* hero */
+--tracking-display:-0.03em;    /* h2 / wordmark */
+--tracking-display-sm:-0.01em; /* card titles */
+--tracking-body:-0.006em;      /* buttons/UI text */
+}

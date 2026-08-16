@@ -1,0 +1,10 @@
+{
+  "name": "flowente-skills",
+  "version": "0.1.0",
+  "description": "Toolkit di skill Flowente: sistema di brand, generatore di brand e skill distribuibili ai clienti.",
+  "author": {
+    "name": "Flowente"
+  },
+  "homepage": "https://github.com/flowente/skills",
+  "skills": "./skills"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "flowente",
+  "owner": {
+    "name": "Flowente",
+    "url": "https://github.com/flowente"
+  },
+  "plugins": [
+    {
+      "name": "flowente-skills",
+      "source": "./",
+      "description": "Sistema di brand Flowente e generatore di brand distribuibile."
+    }
+  ]
+}

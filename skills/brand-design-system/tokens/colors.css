@@ -1,0 +1,15 @@
+/* Flowente — color tokens (from tailwind.config.ts + app/globals.css) */
+:root{
+/* Ink scale (raw) */
+--ink-950:#0B0B0C;--ink-900:#141416;--ink-800:#1D1D20;--ink-700:#29292E;--ink-600:#3A3A40;--ink-500:#55555C;--ink-400:#8A8A92;--ink-300:#B4B4BA;--ink-200:#D9D9D6;--ink-100:#ECECEA;--ink-50:#F5F5F2;
+/* Flow Blue scale (raw) */
+--flow-700:#1B2ED6;--flow-600:#2540FF;--flow-500:#3A55FF;--flow-400:#6B7CFF;--flow-100:#E4E7FF;
+--paper:#FBFBF9;
+/* Semantic roles — light theme */
+--bg:#FBFBF9;--surface:#FFFFFF;--surface-2:#F5F5F2;--border:#D9D9D6;
+--text:#0B0B0C;--text-2:#3A3A40;--muted:#8A8A92;--accent:#2540FF;
+}
+[data-theme="dark"]{
+--bg:#0B0B0C;--surface:#141416;--surface-2:#1D1D20;--border:#2A2A2F;
+--text:#FBFBF9;--text-2:#B4B4BA;--muted:#8A8A92;--accent:#3A55FF;
+}
