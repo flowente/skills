@@ -46,6 +46,8 @@ Both are gates, not reports: they exit non-zero when the pack is not fit to ship
 
 **Constraints, not adjectives.** Every rule must be one a reviewer can fail an output against. "Clean and modern" is not a rule; "no pills, radii 6/8/16/20 only" is. Contrast pairs get computed against WCAG AA by the build script, not assumed — and a failing pair blocks the pack.
 
+**Look at what you ship.** Never hand over a visual deliverable you have not rendered and viewed. A page count, a passing build and a clean grep prove a file exists, not that it is any good — that is how a PDF goes out with the wrong font, no margins and the logo missing. Render at 1440 and 390, read the screenshots, fix, look again. When a shape or composition is uncertain, render two or three variants side by side and choose by looking instead of guessing in code.
+
 ## Standing limits
 
 - If the reference is an image, extract colors programmatically from the actual pixels — don't eyeball hex codes.

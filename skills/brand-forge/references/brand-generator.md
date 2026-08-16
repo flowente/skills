@@ -49,6 +49,18 @@ The method assumes you can sample the image's pixels. Often you cannot: the refe
 - If it states none, describe the colours you see, say explicitly that you are estimating from a compressed image, and ask for the source file or the hex list before committing anything downstream to those values.
 - Either way, say which of the two happened. A palette read off a label and a palette sampled from pixels are not the same evidence, and the client should know which one their brand rests on.
 
+### When the reference IS a live site — measure it
+
+A URL is a different kind of evidence from a picture, and wasting it is the most common mistake. Drive a real browser and read the values out of the page:
+
+```js
+getComputedStyle(el)   // colori, font, spaziature, raggi, ombre — esatti
+```
+
+Never estimate a spacing you could have measured. Capture both viewports (1440 and 390), and sweep the interactions — scroll, hover, click — because a static screenshot hides every behaviour the page has.
+
+This produces measurements, not a mandate to copy. **What you take from a live reference is structure and rhythm: section order, density, how the hero is composed.** The palette, the typefaces and the graphic device stay the brand's own — otherwise the deliverable is a recoloured clone, and it reads as one. Cloning a site you have no rights to is not a technique, it is a liability: reproduce a competitor's layout at your own risk and never their assets.
+
 Be upfront about what can't be reliably reconstructed from a reference alone: an exact typeface can't be "read off" a screenshot with certainty — identify the closest real, licensable family (so the deliverable stays usable) and say so; a complex logo in an image can't be vectorized identically — redraw simple geometric marks in SVG, and for anything more complex write a precise designer/image-gen brief instead of guessing a result.
 
 ## Step 2 — Three divergent directions
@@ -141,6 +153,8 @@ Then the rest:
 - `prompts/BRAND-SYSTEM-PROMPT.md` — self-contained: enough to produce on-brand work with no other file.
 - `guidelines.html` — the printable specimen, and the source of the PDF.
 - A small **component inventory** (8–13 max: nav, hero, button, card, footer, badge/tag, quote, feature section), each with usage rules.
+
+**Write the spec before building the component.** One short file per component — structure, exact values, states, behaviour — then build against it. It costs a few minutes and buys three things: the work can be split across parallel builders without them inventing different versions of the same card, the reviewer has something to check the output *against*, and the rules end up written down instead of living only in the markup. A component built without a spec is a component nobody can verify.
 - `assets/` — see its README for what the script generates and what a human still has to draw.
 
 ### The logo
@@ -155,9 +169,21 @@ It rejects the common failure modes of image models — an opaque background ins
 
 What no script can judge: whether the mark is any good, whether it is original, and whether it reads as this brand. That stays yours. The SVG lockups, the reversed-on-dark version, clear-space and minimum size are hand work — and if clear-space has not been decided, write that it has not been, rather than inventing a number that will look authoritative.
 
-## Step 7 — Ship
+## Step 7 — Render it, look at it, then ship
 
-1. **PDF** — render `guidelines.html` (`html_to_pdf`, or the `pdf` skill). A4, one page per `<section class="page">`.
+**Never hand over a visual deliverable you have not seen.** Counting pages, grepping for placeholders and checking that a build exits zero prove that a file exists — not that it is any good. A PDF validated by a page count is how you ship something with the wrong font, no margins and the logo missing, and find out from the client.
+
+So, before packaging, in this order:
+
+1. **Render every visual artifact** — the guidelines HTML, the sample page, the specimen cards. Screenshot them at 1440 and 390.
+2. **Open the screenshots and read them.** Fonts actually loaded? Text touching an edge? Anything clipped, overlapping, or unreadable? Decorative elements cut off by the viewport? A shape that was supposed to be a flower and came out a blob?
+3. **Fix what you see, then look again.** Two rounds is normal. Discovering a defect on the third pass is cheaper than discovering it after delivery.
+
+When a shape or composition is uncertain, **render two or three variants side by side and choose by looking**, instead of guessing in code and hoping.
+
+Then package:
+
+1. **PDF** — render `guidelines.html` (`html_to_pdf`, the `pdf` skill, or headless Chromium). A4, one page per `<section class="page">`.
 2. **ZIP** — the whole pack folder, so it is portable without git.
 3. **Install instructions** — one line telling the client where to drop the folder so their agent picks it up.
 

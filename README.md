@@ -24,6 +24,7 @@ non va considerata lavoro salvato.
 | `skills/flowente-brand/` | Applica il brand Flowente. Uso interno: token, componenti, UI kit, assets. |
 | `skills/brand-forge/` | Genera un brand nuovo da una referenza. Brand-agnostico, distribuibile. |
 | `docs/piano-brand-toolkit.md` | Il piano a 5 fasi: split, innesto dei pattern, deliverable cliente, packaging, validazione. |
+| `docs/tool-website-cloner.md` | Valutazione di ai-website-cloner-template: perché non lo innestiamo e cosa gli abbiamo preso. |
 | `.claude-plugin/` | Manifest per la distribuzione come plugin Claude Code. |
 
 ## Le due skill
