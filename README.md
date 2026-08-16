@@ -24,7 +24,6 @@ non va considerata lavoro salvato.
 | `skills/flowente-brand/` | Applica il brand Flowente. Uso interno: token, componenti, UI kit, assets. |
 | `skills/brand-forge/` | Genera un brand nuovo da una referenza. Brand-agnostico, distribuibile. |
 | `docs/piano-brand-toolkit.md` | Il piano a 5 fasi: split, innesto dei pattern, deliverable cliente, packaging, validazione. |
-| `docs/ricerca-pika.md` | Cosa fa il Pika MCP, quali pattern valgono la pena e cosa non è replicabile. |
 | `.claude-plugin/` | Manifest per la distribuzione come plugin Claude Code. |
 
 ## Le due skill
@@ -52,8 +51,11 @@ che ci distingue dai generatori di brand kit in PDF.
 - **Fase 0** — materiale trasportato nel repo. ✅
 - **Fase 1** — split in `flowente-brand` + `brand-forge`. ✅ Nessuna funzionalità
   nuova: solo separazione, così il diff resta leggibile.
-- **Fase 2** — innesto dei pattern (divergenza, gate di approvazione,
-  enforcement, routing negativo). Prossima.
+- **Fase 2** — `brand-forge` prende tre direzioni divergenti con verifica a
+  coppie, due stop di approvazione, e regole di enforcement al posto degli
+  aggettivi. ✅
+- **Fase 3** — deliverable cliente: `brand-pack` come skill installabile, PDF,
+  ZIP, spec JSON, pipeline logo. Prossima.
 
 Dettaglio e motivazioni in `docs/piano-brand-toolkit.md`.
 

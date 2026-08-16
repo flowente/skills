@@ -24,12 +24,12 @@ I design token quindi **ci sono già**. Il gap non è quello.
 
 ## Il gap reale — tutto nel Mode B
 
-| # | Manca | Cosa fa Pika |
+| # | Manca | Perché è un problema |
 | --- | --- | --- |
 | 1 | Fase divergente | Va da referenza a *un* brand, diretto. Nessuna esplorazione, niente da far scegliere al cliente. |
 | 2 | Gate duri | Ci sono le domande di onboarding, poi corre fino in fondo. Servono stop alla scelta direzione e alla review guidelines. |
 | 3 | Deliverable cliente | Esce una cartella che rispecchia il package. Un cliente si aspetta PDF + ZIP. |
-| 4 | Logo | La nostra dichiara onestamente che non sa vettorializzare e si ferma. Serve generazione + validazione. |
+| 4 | Logo | Dichiara onestamente che non sa vettorializzare e si ferma. Serve generazione + validazione. |
 | 5 | Spec unico | Token CSS sì, manifest JSON che li lega e export Tailwind no. |
 | 6 | Enforcement | Regole scritte come aggettivi invece che come vincoli verificabili. |
 
@@ -76,13 +76,29 @@ un cliente vanno resi generici.
 Stato: ✅ fatta.
 
 ### Fase 2 — Innesto dei pattern
-La fase che rende di più.
+La fase che rende di più. Tutta su `brand-forge`.
 
-- Regola di divergenza sui 4 assi strutturali
-- Gate di approvazione + override `cost_ack` per l'uso non interattivo
-- Enforcement al posto degli aggettivi (foto, texture, contrasto)
-- Routing negativo nelle description ("NOT for X — use Y")
-- Progressive disclosure: spostare il materiale pesante in `references/`
+- **Regola di divergenza.** Tre direzioni obbligatorie, e due qualsiasi devono
+  differire su almeno 4 assi strutturali su 6 (densità, saturazione, struttura
+  del layout, energia tipografica, device grafico, temperatura). La verifica è a
+  coppie e va mostrata in output come tabella: il cliente deve *vedere* la
+  divergenza, non fidarsi. Previsto lo sblocco per assi vincolati dall'intake.
+- **Due stop duri:** dopo le direzioni e dopo il sistema scritto. Override
+  `--full` / `cost_ack=proceed` per l'uso non interattivo — che rinuncia alle
+  review, mai alle domande di intake.
+- **Enforcement al posto degli aggettivi:** fotografia (prodotto in uso, stand-in
+  rappresentativi vietati), texture (ambient, mai pattern letterale), contrasto
+  (WCAG AA calcolato sui hex reali e riportato, non assunto), accento (deve avere
+  uno spazio negativo dichiarato), "never do" testabili.
+- Routing negativo nelle description — anticipato in Fase 1.
+- Progressive disclosure: `SKILL.md` tiene la forma della run, il metodo pesante
+  sta in `references/brand-generator.md`.
+
+Nota: il controllo contrasto WCAG era previsto in Fase 3 come chiusura di un gap
+del materiale. È finito qui perché è una regola di enforcement sull'output
+generato, e separarla dalle altre non aveva senso.
+
+Stato: ✅ fatta.
 
 ### Fase 3 — Deliverable cliente
 - Template `brand-pack` che `brand-forge` riempie, come **skill installabile**
@@ -92,8 +108,8 @@ La fase che rende di più.
   controllo a dimensione favicon, lockup SVG
 
 ### Fase 4 — Packaging
-`.claude-plugin/` con `plugin.json` e `marketplace.json`, sul modello Pika.
-Eventuale multi-target Codex/Cursor se serve.
+`.claude-plugin/` con `plugin.json` e `marketplace.json`. Eventuale multi-target
+Codex/Cursor se serve.
 
 ### Fase 5 — Validazione
 `brand-forge` girato end-to-end su un brand finto, più misura del triggering con
