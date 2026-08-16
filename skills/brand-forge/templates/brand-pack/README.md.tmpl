@@ -1,0 +1,86 @@
+# {{BRAND_NAME}} — Brand Pack
+
+{{POSITIONING}}
+
+- **Tagline:** {{TAGLINE}}
+- **Metafora centrale:** {{METAPHOR}}
+- **Stile:** {{STYLE_NAME}}
+- **Lingua dei contenuti:** {{LANGUAGE}}
+
+La metafora è la spina dorsale: copy, motion e illustrazione devono esprimere la stessa idea. Una scelta che non è giustificabile con la metafora è fuori brand.
+
+## Come è fatto questo pacchetto
+
+`brand.json` è la fonte di verità. I file in `tokens/` e `tailwind.brand.js` sono **generati** da lì e non si modificano a mano — si cambia `brand.json` e si rigenera:
+
+```
+python3 scripts/build_brand.py brand.json
+```
+
+Il comando rifà i token e rilancia il controllo di contrasto. Se una coppia scende sotto la soglia WCAG AA, esce in errore: il pacchetto non si spedisce rosso senza che qualcuno lo decida esplicitamente.
+
+## Contenuto
+
+| Percorso | Cosa contiene |
+| --- | --- |
+| `brand.json` | Fonte di verità: colori, tipografia, layout, voce, regole |
+| `prompts/BRAND-SYSTEM-PROMPT.md` | Prompt autosufficiente per produrre lavoro on-brand |
+| `tokens/` | Custom properties CSS — generate |
+| `tailwind.brand.js` | Frammento di config Tailwind — generato |
+| `guidelines.html` | Specimen stampabile, sorgente del PDF |
+| `assets/` | Logo, wordmark, favicon nelle taglie validate |
+| `scripts/` | Build dei token e validazione del logo |
+| `SKILL.md` | Punto di ingresso quando il pacchetto è installato come skill |
+
+## Voce
+
+- **Registro:** {{VOICE_REGISTER}}
+- **Casing:** {{VOICE_CASING}}
+- **Punteggiatura:** {{VOICE_PUNCTUATION}}
+
+{{VOICE_RULES}}
+
+**Parole che il brand usa:** {{WORDS_USED}}
+**Parole che non usa:** {{WORDS_BANNED}}
+**CTA:** {{CTA_EXAMPLES}}
+
+## Colore
+
+{{COLOR_DISCIPLINE}}
+
+I ruoli semantici (`--bg --surface --surface-2 --border --text --text-2 --muted --accent`) esistono in chiaro e in scuro. **I componenti usano i ruoli, mai gli hex.**
+
+Contrasti verificati contro WCAG AA — rapporti calcolati sui valori reali, riportati dallo script di build.
+
+## Immagini e texture
+
+- **Fotografia:** {{PHOTOGRAPHY_RULE}}
+- **Texture:** {{TEXTURE_RULE}}
+- **Icone:** {{ICONOGRAPHY_RULE}}
+- **Device grafico:** {{MARK_SYSTEM}}
+
+## Logo
+
+Le taglie in `assets/` sono generate e validate con:
+
+```
+python3 scripts/validate_logo.py assets/mark.png --out assets/
+```
+
+Lo script verifica trasparenza, canvas quadrata, margini e leggibilità a 16px, poi scrive le otto taglie. Quello che non può giudicare — se il mark è buono, se è originale, se legge come il brand — resta umano.
+
+- **Clear-space:** {{LOGO_CLEARSPACE}}
+- **Dimensione minima:** {{LOGO_MIN_SIZE}}
+- **Su fondo scuro:** {{LOGO_REVERSED}}
+
+## Never do
+
+{{NEVER_DO_LIST}}
+
+Ogni voce dev'essere testabile: un revisore deve poter indicare un output e dire "questo viola la regola X".
+
+## Quello che questo pacchetto non copre
+
+{{UNDOCUMENTED_LIST}}
+
+Dichiarati apposta invece di essere inventati. Se una richiesta ne ha bisogno davvero, chiedere.

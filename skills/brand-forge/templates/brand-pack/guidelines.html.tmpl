@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="{{LANGUAGE}}">
+<head>
+<meta charset="utf-8">
+<title>{{BRAND_NAME}} — Brand Guidelines</title>
+<link rel="stylesheet" href="tokens/colors.css">
+<link rel="stylesheet" href="tokens/typography.css">
+<link rel="stylesheet" href="tokens/spacing.css">
+<link rel="stylesheet" href="tokens/grid.css">
+<style>
+  /* Sorgente del PDF. Render:  html_to_pdf, oppure la skill `pdf`.
+     Il layout è A4 verticale; ogni <section class="page"> è una pagina. */
+  @page { size: A4; margin: 18mm 16mm; }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body), system-ui, sans-serif;
+    line-height: var(--leading-body, 1.6);
+    font-size: 10.5pt;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display), system-ui, sans-serif;
+    letter-spacing: var(--tracking-display, -0.03em);
+    line-height: var(--leading-display, 1.05);
+    margin: 0 0 .6em;
+  }
+  h1 { font-size: 30pt; }
+  h2 { font-size: 16pt; margin-top: 0; }
+  h3 { font-size: 11pt; text-transform: uppercase; letter-spacing: .08em; color: var(--text-2); }
+
+  .page { page-break-after: always; padding-top: 4mm; }
+  .page:last-child { page-break-after: auto; }
+
+  .lede { font-size: 12pt; color: var(--text-2); max-width: 46em; }
+  .meta { font-family: var(--font-mono), monospace; font-size: 8pt;
+          text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+
+  .cover { display: flex; flex-direction: column; justify-content: center; min-height: 200mm; }
+  .cover h1 { font-size: 42pt; }
+
+  .swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6mm; margin: 6mm 0; }
+  .swatch .chip { height: 22mm; border-radius: var(--radius-md, 8px); border: 1px solid var(--border); }
+  .swatch code { font-family: var(--font-mono), monospace; font-size: 8pt; color: var(--text-2); }
+  .swatch b { display: block; font-size: 9pt; margin-top: 2mm; }
+
+  table { width: 100%; border-collapse: collapse; margin: 4mm 0; font-size: 9pt; }
+  th, td { text-align: left; padding: 2mm 3mm; border-bottom: 1px solid var(--border); }
+  th { font-family: var(--font-mono), monospace; font-size: 8pt;
+       text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 400; }
+  td.pass { color: var(--text); }
+  td.fail { font-weight: 700; }
+
+  .specimen { border: 1px solid var(--border); border-radius: var(--radius-lg, 16px);
+              padding: 6mm; margin: 4mm 0; background: var(--surface); }
+  .gridviz { display: grid; gap: var(--grid-gutter, 24px);
+             grid-template-columns: repeat(var(--grid-columns, 12), minmax(0, 1fr)); }
+  .gridviz span { height: 18mm; background: var(--surface-2); border-radius: var(--radius-sm, 6px); }
+
+  ul.rules { padding-left: 5mm; }
+  ul.rules li { margin-bottom: 2mm; }
+  .never li::marker { content: "✕  "; }
+  .gap { color: var(--text-2); }
+</style>
+</head>
+<body>
+
+<section class="page cover">
+  <p class="meta">Brand guidelines</p>
+  <h1>{{BRAND_NAME}}</h1>
+  <p class="lede">{{TAGLINE}}</p>
+  <p class="meta">{{STYLE_NAME}} · {{DATE}}</p>
+</section>
+
+<section class="page">
+  <h2>Il nucleo</h2>
+  <p class="lede">{{POSITIONING}}</p>
+  <h3>Metafora centrale</h3>
+  <p>{{METAPHOR}}</p>
+  <p>È la spina dorsale del brand: copy, motion e illustrazione esprimono la stessa idea.
+     Una scelta che non è giustificabile con la metafora è fuori brand, per quanto ben eseguita.</p>
+</section>
+
+<section class="page">
+  <h2>Colore</h2>
+  <h3>Ruoli semantici — chiaro</h3>
+  <div class="swatches">{{SWATCHES_LIGHT}}</div>
+  <h3>Ruoli semantici — scuro</h3>
+  <div class="swatches">{{SWATCHES_DARK}}</div>
+  <h3>Disciplina</h3>
+  <p>{{COLOR_DISCIPLINE}}</p>
+  <p>I componenti usano i ruoli, mai gli hex.</p>
+</section>
+
+<section class="page">
+  <h2>Contrasto</h2>
+  <p class="lede">Rapporti calcolati sui valori reali, non stimati a occhio. Soglie WCAG AA:
+     4.5:1 per il testo corrente, 3:1 per il testo grande.</p>
+  <table>
+    <thead><tr><th>Tema</th><th>Coppia</th><th>Colori</th><th>Ratio</th><th>Minimo</th><th>Esito</th></tr></thead>
+    <tbody>{{CONTRAST_ROWS}}</tbody>
+  </table>
+</section>
+
+<section class="page">
+  <h2>Tipografia</h2>
+  <div class="specimen">
+    <p class="meta">Display — {{TYPE_DISPLAY}}</p>
+    <h1 style="font-size:{{TYPE_HERO_PRINT}}">{{TAGLINE}}</h1>
+  </div>
+  <div class="specimen">
+    <p class="meta">Body — {{TYPE_BODY}}</p>
+    <p>{{TYPE_SPECIMEN_BODY}}</p>
+  </div>
+  <div class="specimen">
+    <p class="meta">Mono — {{TYPE_MONO}}</p>
+    <p style="font-family:var(--font-mono),monospace">{{TYPE_SPECIMEN_MONO}}</p>
+  </div>
+</section>
+
+<section class="page">
+  <h2>Layout e griglia</h2>
+  <table>
+    <tbody>
+      <tr><th>Larghezza contenuto</th><td>{{LAYOUT_MAXWIDTH}}</td></tr>
+      <tr><th>Padding laterale</th><td>{{LAYOUT_SIDEPADDING}}</td></tr>
+      <tr><th>Ritmo di sezione</th><td>{{LAYOUT_SECTIONPADDING}}</td></tr>
+      <tr><th>Altezza nav</th><td>{{LAYOUT_NAVHEIGHT}}</td></tr>
+      <tr><th>Griglia</th><td>{{GRID_COLUMNS}} colonne · gutter {{GRID_GUTTER}} · margine {{GRID_MARGIN}}</td></tr>
+      <tr><th>Raggi</th><td>{{RADII}}</td></tr>
+      <tr><th>Ombre</th><td>{{SHADOW_POLICY}}</td></tr>
+    </tbody>
+  </table>
+  <div class="gridviz">{{GRID_COLUMN_SPANS}}</div>
+</section>
+
+<section class="page">
+  <h2>Immagini, texture, device</h2>
+  <h3>Fotografia</h3><p>{{PHOTOGRAPHY_RULE}}</p>
+  <h3>Texture</h3><p>{{TEXTURE_RULE}}</p>
+  <h3>Icone</h3><p>{{ICONOGRAPHY_RULE}}</p>
+  <h3>Device grafico</h3><p>{{MARK_SYSTEM}}</p>
+</section>
+
+<section class="page">
+  <h2>Movimento</h2>
+  <table>
+    <thead><tr><th>Nome</th><th>Durata</th><th>Easing</th><th>Dove</th></tr></thead>
+    <tbody>{{MOTION_ROWS}}</tbody>
+  </table>
+  <p>Tutto rispetta <code>prefers-reduced-motion</code>.</p>
+</section>
+
+<section class="page">
+  <h2>Voce</h2>
+  <table>
+    <tbody>
+      <tr><th>Registro</th><td>{{VOICE_REGISTER}}</td></tr>
+      <tr><th>Casing</th><td>{{VOICE_CASING}}</td></tr>
+      <tr><th>Punteggiatura</th><td>{{VOICE_PUNCTUATION}}</td></tr>
+    </tbody>
+  </table>
+  <ul class="rules">{{VOICE_RULES_HTML}}</ul>
+  <h3>Parole che usa</h3><p>{{WORDS_USED}}</p>
+  <h3>Parole che non usa</h3><p>{{WORDS_BANNED}}</p>
+  <h3>CTA</h3><p>{{CTA_EXAMPLES}}</p>
+</section>
+
+<section class="page">
+  <h2>Logo</h2>
+  <table>
+    <tbody>
+      <tr><th>Clear-space</th><td>{{LOGO_CLEARSPACE}}</td></tr>
+      <tr><th>Dimensione minima</th><td>{{LOGO_MIN_SIZE}}</td></tr>
+      <tr><th>Su fondo scuro</th><td>{{LOGO_REVERSED}}</td></tr>
+    </tbody>
+  </table>
+  <p>Taglie fornite: 16, 32, 48, 64, 128, 256, 512, 1024 px, più i lockup SVG.
+     Validate per trasparenza, canvas quadrata, margini e leggibilità a 16px.</p>
+</section>
+
+<section class="page">
+  <h2>Never do</h2>
+  <ul class="rules never">{{NEVER_DO_HTML}}</ul>
+  <p>Ogni voce è testabile: un revisore deve poter indicare un output e dire
+     &laquo;questo viola la regola X&raquo;.</p>
+  <h2 style="margin-top:10mm">Non coperto da queste linee guida</h2>
+  <ul class="rules gap">{{UNDOCUMENTED_HTML}}</ul>
+  <p class="gap">Dichiarato apposta invece che inventato. Se serve, chiedere.</p>
+</section>
+
+</body>
+</html>

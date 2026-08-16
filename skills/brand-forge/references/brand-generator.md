@@ -95,14 +95,54 @@ A rule a reviewer cannot fail an output against is not a rule. These are mandato
 ### → Stop 2
 Present the written system — core, tone, foundations — and wait for approval before producing the package in Step 6. This is the last cheap moment to change direction.
 
-## Step 6 — Deliverables (this list is the package structure)
-Produce the brand as files:
-- `README.md` — the full rulebook: fundamentals, visual foundations, iconography, components, caveats.
-- `styles.css` + `tokens/colors.css`, `tokens/typography.css`, `tokens/spacing.css`, `tokens/grid.css` — working CSS custom properties, light + dark, including the reusable column grid.
-- `assets/` — logo/wordmark as SVG if generatable, otherwise precise briefs for a designer.
-- A small **component inventory** (8–13 components max: nav, hero, button, card, footer, badge/tag, quote, feature section) each with usage rules.
-- Specimen cards or one HTML sample page proving the system hangs together.
-- `BRAND-SYSTEM-PROMPT.md` — a standalone system prompt that lets any AI produce on-brand work without other context: package map, color rules, type, layout, illustration, motion, tone with examples, and a final "never do" list.
+## Step 6 — Fill the brand pack
+
+The deliverable is not a folder of documents: it is **an installable skill package**. The client installs it and their agent produces on-brand work on its own, without anyone re-explaining the brand. That is the thing being paid for.
+
+Copy `templates/brand-pack/` to `<slug>-brand/`, drop the `.tmpl` extensions, and fill every `{{PLACEHOLDER}}`. A placeholder left in a shipped pack is a defect.
+
+**Copy `scripts/` into the pack too.** The pack must be self-contained: the client rebuilds their own tokens after changing a colour, long after this skill is out of the picture. A pack that can only be rebuilt by whoever generated it is not a deliverable.
+
+**Write `brand.json` first.** It is the single source of truth: colours, type, layout, radii, motion, voice, never-do list, and the explicit list of what the pack does *not* cover. Then generate everything derived from it:
+
+```
+python3 scripts/build_brand.py <slug>-brand/brand.json
+```
+
+That writes `tokens/*.css` and `tailwind.brand.js`, and runs the WCAG AA check on every semantic pair. **It exits non-zero on a failing pair and the pack does not ship red.** Either fix the colour, or — if a pair is genuinely display-only — rerun with `--allow-contrast-fail` and write the reason into the pack's README. Never edit a generated token file by hand: the next rebuild silently overwrites it and the pack starts disagreeing with itself.
+
+Then the rest:
+- `SKILL.md` — the entry point, so the pack is installable rather than merely readable.
+- `README.md` — the full rulebook with the reasoning behind the rules.
+- `prompts/BRAND-SYSTEM-PROMPT.md` — self-contained: enough to produce on-brand work with no other file.
+- `guidelines.html` — the printable specimen, and the source of the PDF.
+- A small **component inventory** (8–13 max: nav, hero, button, card, footer, badge/tag, quote, feature section), each with usage rules.
+- `assets/` — see its README for what the script generates and what a human still has to draw.
+
+### The logo
+
+Generate the mark with whatever image tool is available, then **validate it — a generated logo is not a deliverable until it has been checked**:
+
+```
+python3 scripts/validate_logo.py <slug>-brand/assets/mark.png --out <slug>-brand/assets/
+```
+
+It rejects the common failure modes of image models — an opaque background instead of an alpha channel, a non-square canvas, wide transparent margins, a source too small for the largest size — and it shrinks the mark to 16px to see whether anything survives. Passing, it writes the eight PNG sizes.
+
+What no script can judge: whether the mark is any good, whether it is original, and whether it reads as this brand. That stays yours. The SVG lockups, the reversed-on-dark version, clear-space and minimum size are hand work — and if clear-space has not been decided, write that it has not been, rather than inventing a number that will look authoritative.
+
+## Step 7 — Ship
+
+1. **PDF** — render `guidelines.html` (`html_to_pdf`, or the `pdf` skill). A4, one page per `<section class="page">`.
+2. **ZIP** — the whole pack folder, so it is portable without git.
+3. **Install instructions** — one line telling the client where to drop the folder so their agent picks it up.
+
+Before handing over, check four things:
+
+1. No `{{` left in any file, **and** no ALL-CAPS placeholder strings left in `brand.json` — the two use different conventions, so grepping for `{{` alone misses half of them.
+2. The contrast table is green, or its exceptions are written down with a reason.
+3. `scripts/` is inside the pack, so the client can rebuild without you.
+4. The "not covered" list is honest rather than empty. An empty gap list is almost always a lie.
 
 ## Quality bar
 - Every rule must be **falsifiable** (a reviewer can point at output and say "this violates rule X"). "Clean and modern" is not a rule; "no pills, radii 6/8/16/20 only" is.

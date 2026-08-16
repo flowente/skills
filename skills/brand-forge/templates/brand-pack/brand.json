@@ -1,0 +1,150 @@
+{
+  "_comment": "Fonte di verità del brand pack. Tutto il resto (tokens/*.css, tailwind.brand.js) è generato da qui con scripts/build_brand.py — non si modificano a mano. I valori qui sotto sono uno scheletro valido: sostituiscili, non toglierli.",
+
+  "name": "NOME BRAND",
+  "slug": "nome-brand",
+  "language": "it",
+
+  "core": {
+    "tagline": "TAGLINE — corta, ownable, costruita sulla metafora centrale",
+    "metaphor": "METAFORA CENTRALE — la spina dorsale: copy, motion e illustrazione devono tutti esprimerla",
+    "styleName": "NOME STILE — due o tre parole, così la direzione è citabile",
+    "positioning": "Per [pubblico], [brand] è il [categoria] che [differenziatore]"
+  },
+
+  "color": {
+    "neutral": {
+      "50": "#FBFBF9",
+      "100": "#F7F7F5",
+      "200": "#EFEFEC",
+      "300": "#E2E2DD",
+      "400": "#C4C4BD",
+      "500": "#9A9A93",
+      "600": "#6E6E7A",
+      "700": "#4A4A55",
+      "800": "#2A2A32",
+      "900": "#14141A",
+      "950": "#0B0B0C"
+    },
+    "accent": {
+      "default": "#1F3BD9",
+      "dark": "#5B72FF"
+    },
+    "discipline": "REGOLA DI DISCIPLINA DEL COLORE — dove l'accento può apparire e, esplicitamente, dove non deve mai apparire. 'Accento per enfasi' non è una regola.",
+    "semantic": {
+      "light": {
+        "bg": "#FFFFFF",
+        "surface": "#F7F7F5",
+        "surface-2": "#EFEFEC",
+        "border": "#E2E2DD",
+        "text": "#14141A",
+        "text-2": "#4A4A55",
+        "muted": "#6E6E7A",
+        "accent": "#1F3BD9"
+      },
+      "dark": {
+        "bg": "#0B0B0C",
+        "surface": "#141416",
+        "surface-2": "#1C1C1F",
+        "border": "#2A2A2E",
+        "text": "#F5F5F2",
+        "text-2": "#B8B8C0",
+        "muted": "#8A8A94",
+        "accent": "#5B72FF"
+      }
+    }
+  },
+
+  "type": {
+    "display": {
+      "family": "FONT DISPLAY",
+      "weights": [600],
+      "tracking": "-0.03em",
+      "lineHeight": "1.05"
+    },
+    "body": {
+      "family": "FONT BODY",
+      "weights": [400, 500],
+      "lineHeight": "1.6"
+    },
+    "mono": {
+      "family": "FONT MONO",
+      "weights": [400],
+      "lineHeight": "1.4"
+    },
+    "scale": {
+      "xs": "0.75rem",
+      "sm": "0.875rem",
+      "base": "1rem",
+      "lg": "1.25rem",
+      "xl": "1.75rem",
+      "2xl": "2.5rem"
+    },
+    "heroClamp": "clamp(2.8rem, 6vw, 4.6rem)"
+  },
+
+  "layout": {
+    "maxWidth": "1160px",
+    "sidePadding": "40px",
+    "sectionPadding": "88px",
+    "navHeight": "66px",
+    "grid": {
+      "columns": 12,
+      "gutter": "24px",
+      "margin": "40px",
+      "breakpoints": {
+        "1024px": 8,
+        "640px": 4
+      }
+    }
+  },
+
+  "radii": {
+    "sm": "6px",
+    "md": "8px",
+    "lg": "16px",
+    "xl": "20px"
+  },
+
+  "shadow": {
+    "value": "0 8px 30px rgba(0, 0, 0, 0.08)",
+    "policy": "POLITICA OMBRE — idealmente una sola ombra, usata in un solo punto"
+  },
+
+  "motion": [
+    {
+      "name": "NOME MICRO-INTERAZIONE",
+      "duration": "180ms",
+      "easing": "ease-out",
+      "description": "Cosa fa e dove si applica"
+    }
+  ],
+  "motionNote": "3-5 micro-interazioni nominate. Tutte devono rispettare prefers-reduced-motion.",
+
+  "voice": {
+    "register": "REGISTRO — formale/informale, persona usata",
+    "casing": "REGOLE DI CASING — sentence case? label mono maiuscole? wordmark minuscolo?",
+    "punctuation": "MICRO-REGOLE DI PUNTEGGIATURA — em-dash? separatori? emoji: di default nessuna",
+    "rules": [
+      "REGOLA DI TONO con ESEMPIO scritto nella voce del brand"
+    ],
+    "wordsUsed": ["cinque", "parole", "che", "il brand", "usa"],
+    "wordsBanned": ["cinque", "parole", "che", "non", "usa"],
+    "ctaExamples": ["ESEMPIO CTA 1", "ESEMPIO CTA 2", "ESEMPIO CTA 3"]
+  },
+
+  "imagery": {
+    "photography": "REGOLA FOTOGRAFIA — il prodotto o servizio in uso, nel suo contesto reale. Vietati gli stand-in rappresentativi. Se il brand non ha fotografia, scrivi 'nessuna' e di' cosa la sostituisce.",
+    "texture": "REGOLA TEXTURE — ambient: grana, dot-grid, carta a bassa opacità dietro il contenuto. Mai un pattern letterale come decorazione.",
+    "iconography": "POLITICA ICONE — un set preciso, oppure una regola esplicita di assenza con le alternative",
+    "markSystem": "DEVICE GRAFICO — l'elemento distintivo e ownable, inventato per questo brand"
+  },
+
+  "neverDo": [
+    "OGNI VOCE DEVE ESSERE TESTABILE — 'niente pill, radii solo 6/8/16/20' passa, 'pulito e moderno' no"
+  ],
+
+  "undocumented": [
+    "Elenca qui quello che il materiale non copre invece di inventarlo: clear-space del logo, dimensione minima, versione reversed su scuro, colori per data-viz, boilerplate legale."
+  ]
+}

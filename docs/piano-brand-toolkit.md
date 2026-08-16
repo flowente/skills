@@ -114,11 +114,33 @@ generato, e separarla dalle altre non aveva senso.
 Stato: ✅ fatta.
 
 ### Fase 3 — Deliverable cliente
-- Template `brand-pack` che `brand-forge` riempie, come **skill installabile**
-- PDF guidelines (le skill `pdf` e `pptx` esistono già)
-- ZIP portatile + spec JSON + export Tailwind
-- Pipeline logo: generazione via image AI, PNG trasparente, 8 dimensioni,
-  controllo a dimensione favicon, lockup SVG
+
+Il deliverable non è una cartella di documenti: è **una skill installabile**. Il
+cliente la installa e il suo agente produce on-brand da solo. È la cosa che paga.
+
+- `templates/brand-pack/` — scheletro da copiare e riempire: `SKILL.md` (il
+  pacchetto è installabile, non solo leggibile), `README.md`, il system prompt
+  autosufficiente, `guidelines.html` stampabile, `brand.json`, `assets/`.
+  I file portano `.tmpl` così lo scheletro non viene scoperto come skill vera.
+- `brand.json` è la fonte di verità unica; `tokens/*.css` e `tailwind.brand.js`
+  sono generati e non si toccano a mano.
+- `scripts/build_brand.py` — genera i derivati **e fa da gate**: calcola il
+  contrasto WCAG AA su ogni coppia semantica ed esce in errore se una fallisce.
+  Solo stdlib, così un cliente può rigenerare il proprio pack senza installare
+  niente.
+- `scripts/validate_logo.py` — rifiuta i modi tipici in cui un image model
+  sbaglia un logo (sfondo opaco invece dell'alpha, canvas non quadrata, margini
+  larghi, sorgente sotto 1024px) e verifica che a 16px resti qualcosa di
+  leggibile. Poi scrive le otto taglie. Richiede Pillow.
+- Consegna: PDF da `guidelines.html`, ZIP, riga di installazione.
+
+Entrambi gli script sono gate, non report: escono non-zero quando il pack non è
+in condizione di essere spedito. Testati su fixture buone e volutamente rotte.
+
+Quello che gli script non giudicano — se il mark è bello, se è originale, se
+legge come il brand — resta umano, ed è scritto nel metodo.
+
+Stato: ✅ fatta.
 
 ### Fase 4 — Packaging
 `.claude-plugin/` con `plugin.json` e `marketplace.json`. Eventuale multi-target

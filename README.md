@@ -54,8 +54,11 @@ che ci distingue dai generatori di brand kit in PDF.
 - **Fase 2** — `brand-forge` prende tre direzioni divergenti con verifica a
   coppie, due stop di approvazione, e regole di enforcement al posto degli
   aggettivi. ✅
-- **Fase 3** — deliverable cliente: `brand-pack` come skill installabile, PDF,
-  ZIP, spec JSON, pipeline logo. Prossima.
+- **Fase 3** — deliverable cliente: template `brand-pack` come skill
+  installabile, `brand.json` come fonte unica, build dei token con gate sul
+  contrasto, validazione del logo. ✅
+- **Fase 4** — packaging plugin. Prossima.
+- **Fase 5** — validazione end-to-end su un brand di prova.
 
 Dettaglio e motivazioni in `docs/piano-brand-toolkit.md`.
 

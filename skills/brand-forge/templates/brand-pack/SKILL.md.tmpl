@@ -1,0 +1,31 @@
+---
+name: {{SLUG}}-brand
+description: 'Use whenever the user wants to design, mock up, or write anything for {{BRAND_NAME}} — a UI screen, a slide or deck, a landing page, a one-pager, an image-generation prompt, or copy — so the exact brand rules (hex colours, font weights, grid, radii, motion, logo, tone of voice) get applied automatically instead of approximated. Trigger proactively on brand consistency or "on-brand" questions about {{BRAND_NAME}}; do not wait to be told the brand name. NOT for inventing a new brand or for any company other than {{BRAND_NAME}}. Out of scope: social media templates.'
+---
+
+# {{BRAND_NAME}}
+
+{{POSITIONING}}
+
+Style: **{{STYLE_NAME}}** · Tagline: **{{TAGLINE}}** · Central metaphor: {{METAPHOR}}
+
+Every choice in this package has to be justifiable by that metaphor. If a proposal cannot be, it is off-brand however good it looks.
+
+## Working order
+
+1. Read `prompts/BRAND-SYSTEM-PROMPT.md` first — it is self-contained and enough to produce on-brand work with no other context.
+2. `README.md` is the full rulebook when you need the reasoning behind a rule.
+3. Use `tokens/*.css` as-is. Never hard-code a hex that exists as a token, and never edit the token files by hand — they are generated from `brand.json`.
+4. `brand.json` is the single source of truth. Changing a colour means changing it there and rebuilding: `python3 scripts/build_brand.py brand.json`.
+5. `guidelines.html` is the printable specimen — open it to see the system rendered rather than described.
+6. Logo assets are in `assets/`. Clear-space and minimum size are stated in `README.md`; if a placement needs a value that is not written down, ask rather than inventing one.
+
+## Never do
+
+{{NEVER_DO_LIST}}
+
+## What this package does not cover
+
+{{UNDOCUMENTED_LIST}}
+
+If a task needs one of these, ask. Do not invent a value that will look precise but isn't sourced.

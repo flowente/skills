@@ -20,7 +20,21 @@ This package is brand-neutral by design: it ships no other company's identity, a
 1. **Intake** — ingest the reference, and ask about purpose and tone if it doesn't answer them.
 2. **Three divergent directions** → **stop for a choice**.
 3. **Brand core, tone of voice, visual foundations** → **stop for approval**.
-4. **Package**.
+4. **Fill the pack** from `templates/brand-pack/`, generate what is derived, validate the logo.
+5. **Ship** — PDF, ZIP, install line.
+
+## What gets delivered
+
+Not a folder of documents: **an installable skill package**. The client installs it and their agent produces on-brand work on its own, without anyone re-explaining the brand. That is what they are paying for.
+
+`brand.json` is the pack's single source of truth. `tokens/*.css` and `tailwind.brand.js` are generated from it and never hand-edited — a rebuild would silently overwrite the edit and the pack would start disagreeing with itself.
+
+```
+python3 scripts/build_brand.py <pack>/brand.json      # tokens + Tailwind + contrasto
+python3 scripts/validate_logo.py <pack>/assets/mark.png --out <pack>/assets/
+```
+
+Both are gates, not reports: they exit non-zero when the pack is not fit to ship. `build_brand.py` needs nothing but Python — a client must be able to rebuild their own pack without installing anything. `validate_logo.py` needs Pillow.
 
 ## The three rules that make it worth paying for
 
@@ -28,7 +42,7 @@ This package is brand-neutral by design: it ships no other company's identity, a
 
 **Two hard stops.** After the directions, and after the written system. Producing a full package on a direction nobody chose wastes the client's money and yours. The exception is an explicit non-interactive request (`--full`, `cost_ack=proceed`) — that waives the review stops, never the intake questions.
 
-**Constraints, not adjectives.** Every rule must be one a reviewer can fail an output against. "Clean and modern" is not a rule; "no pills, radii 6/8/16/20 only" is. Contrast pairs get computed against WCAG AA, not assumed.
+**Constraints, not adjectives.** Every rule must be one a reviewer can fail an output against. "Clean and modern" is not a rule; "no pills, radii 6/8/16/20 only" is. Contrast pairs get computed against WCAG AA by the build script, not assumed — and a failing pair blocks the pack.
 
 ## Standing limits
 
@@ -40,3 +54,6 @@ This package is brand-neutral by design: it ships no other company's identity, a
 
 ## Index
 - `references/brand-generator.md` — the full working method, read it first
+- `templates/brand-pack/` — the skeleton to copy and fill (`.tmpl` files lose the extension)
+- `scripts/build_brand.py` — brand.json → tokens, Tailwind, contrast gate
+- `scripts/validate_logo.py` — logo checks + the eight PNG sizes
