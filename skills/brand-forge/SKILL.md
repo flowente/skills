@@ -15,6 +15,8 @@ This package is brand-neutral by design: it ships no other company's identity, a
 
 `references/brand-generator.md` is the working method — read it in full before starting. It carries the six steps, the divergence rule, and the enforcement rules. What follows here is only the shape of the run.
 
+`references/layout-system.md` is the second mandatory read, before building **any** page or document. Colours, fonts and rules can all be right and the result still look amateur: what gives it away is proportion — a flat type scale, uniform gaps, lines too long, padding that ignores the size of the thing it pads.
+
 ## The shape of the run
 
 1. **Intake** — ingest the reference, and ask about purpose, tone and **mandate** if it doesn't answer them.
@@ -46,6 +48,8 @@ Both are gates, not reports: they exit non-zero when the pack is not fit to ship
 
 **Constraints, not adjectives.** Every rule must be one a reviewer can fail an output against. "Clean and modern" is not a rule; "no pills, radii 6/8/16/20 only" is. Contrast pairs get computed against WCAG AA by the build script, not assumed — and a failing pair blocks the pack.
 
+**Proportion is judged before content.** A modular type scale with real contrast (a hero is 4–6× the body, not 2×), 45–75 characters per line, space inside a group smaller than space between groups, section rhythm that varies with importance, padding proportional to the component. These are in `references/layout-system.md` and they are not taste — they are the difference between a deliverable and a filled-in template.
+
 **Look at what you ship.** Never hand over a visual deliverable you have not rendered and viewed. A page count, a passing build and a clean grep prove a file exists, not that it is any good — that is how a PDF goes out with the wrong font, no margins and the logo missing. Render at 1440 and 390, read the screenshots, fix, look again. When a shape or composition is uncertain, render two or three variants side by side and choose by looking instead of guessing in code.
 
 ## Standing limits
@@ -58,6 +62,7 @@ Both are gates, not reports: they exit non-zero when the pack is not fit to ship
 
 ## Index
 - `references/brand-generator.md` — the full working method, read it first
+- `references/layout-system.md` — spacing and proportion, read it before building anything
 - `templates/brand-pack/` — the skeleton to copy and fill (`.tmpl` files lose the extension)
 - `scripts/build_brand.py` — brand.json → tokens, Tailwind, contrast gate
 - `scripts/validate_logo.py` — logo checks + the eight PNG sizes

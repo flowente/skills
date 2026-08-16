@@ -142,6 +142,23 @@ legge come il brand — resta umano, ed è scritto nel metodo.
 
 Stato: ✅ fatta.
 
+### Fase 3b — Impaginazione
+
+Emersa dal test su un brand vero. Il pacchetto era corretto e sembrava comunque
+un template: scala tipografica piatta, gap uniformi, pagine di solo testo piene
+a meta, righe troppo lunghe, padding fisso su componenti di dimensioni diverse.
+
+Nessuna di queste cose viola una regola di brand — violano le proporzioni, che
+sono la prima cosa che l'occhio giudica e l'unica di cui nessun controllo
+automatico si accorge.
+
+Codificate in `references/layout-system.md`: scala modulare con contrasto reale
+(hero 4-6x il corpo, non 2x), misura 45-75 caratteri, prossimita prima della
+spaziatura, ritmo di sezione variabile, padding proporzionale al componente, e
+sei controlli da fare guardando il render.
+
+Stato: ✅ fatta.
+
 ### Fase 4 — Packaging
 `.claude-plugin/` con `plugin.json` e `marketplace.json`. Eventuale multi-target
 Codex/Cursor se serve.

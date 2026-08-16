@@ -151,7 +151,7 @@ Then the rest:
 - `SKILL.md` — the entry point, so the pack is installable rather than merely readable.
 - `README.md` — the full rulebook with the reasoning behind the rules.
 - `prompts/BRAND-SYSTEM-PROMPT.md` — self-contained: enough to produce on-brand work with no other file.
-- `guidelines.html` — the printable specimen, and the source of the PDF.
+- `guidelines.html` — the printable specimen, and the source of the PDF. Build it against `layout-system.md`: a guidelines document with a flat type scale and half-empty pages undoes every rule it contains.
 - A small **component inventory** (8–13 max: nav, hero, button, card, footer, badge/tag, quote, feature section), each with usage rules.
 
 **Write the spec before building the component.** One short file per component — structure, exact values, states, behaviour — then build against it. It costs a few minutes and buys three things: the work can be split across parallel builders without them inventing different versions of the same card, the reviewer has something to check the output *against*, and the rules end up written down instead of living only in the markup. A component built without a spec is a component nobody can verify.
