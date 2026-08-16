@@ -39,18 +39,41 @@ I design token quindi **ci sono già**. Il gap non è quello.
 Repo dedicato come fonte di verità, materiale trasportato, packaging plugin
 predisposto.
 
-**Rischio da risolvere subito:** le skill vivono in
-`~/.claude/skills/synced/`, sovrascritta dal sync claude.ai. Va deciso chi
-comanda, o il lavoro sparisce al primo sync.
+**Rischio risolto:** le skill vivono anche in `~/.claude/skills/synced/`,
+sovrascritta dal sync claude.ai. Deciso che **comanda GitHub**: questo repo è la
+fonte di verità, la copia sincronizzata si riallinea. Regola scritta nel README.
+
+Stato: ✅ fatta.
 
 ### Fase 1 — Split
 `flowente-brand` (Mode A, invariato nella sostanza) e `brand-forge` (Mode B,
 brand-agnostico). **Zero funzionalità nuove**: solo separazione, così il diff è
 verificabile e non si mescola con il resto.
 
-Da decidere qui: cosa è condiviso fra le due. I componenti React sono materiale
-Flowente e restano in `flowente-brand`; `brand-forge` li referenzia come esempio
-di profondità attesa, non li copia.
+Deciso qui: cosa è condiviso fra le due. I componenti React, i token, le
+guidelines, l'UI kit e gli assets sono materiale Flowente e restano in
+`flowente-brand`. `brand-forge` **non li copia**: se `flowente-brand` è
+installata di fianco la usa come esempio di profondità attesa, altrimenti si
+regge sulla lista di deliverable dello Step 5 del suo metodo. È la condizione
+per poterla consegnare a un cliente senza consegnargli anche il brand Flowente.
+
+Fatto in aggiunta alla pura separazione, perché senza sarebbero rimasti
+riferimenti rotti:
+
+- rimosso il frontmatter da `references/brand-generator.md` — non è più un punto
+  di ingresso di skill ma un documento letto da `brand-forge`, e un `name:`
+  residuo confonderebbe la scoperta delle skill
+- riscritti i rimandi ai file Flowente che `brand-forge` non spedisce più
+- aggiunto routing negativo alle description di entrambe ("NOT for X — use Y"),
+  che era già in programma per la Fase 2 ma qui serviva a evitare che le due
+  skill si attivassero a vicenda
+
+Restano da ripulire in Fase 2 le citazioni di Flowente usate dentro il metodo
+come esempi di specificità delle regole (il "mai su bottoni o testo", i Flow
+Marks): non sono riferimenti rotti, sono esempi validi, ma in una skill venduta a
+un cliente vanno resi generici.
+
+Stato: ✅ fatta.
 
 ### Fase 2 — Innesto dei pattern
 La fase che rende di più.

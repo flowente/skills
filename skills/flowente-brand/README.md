@@ -35,10 +35,10 @@ Core (`components/core/`): **SvgFilters** (required once per page), **FlowMark**
 Site (`components/site/`): **Nav**, **Hero**, **FeatureSection**, **Card**, **CardGrid**, **QuoteRow**, **Footer**.
 This is the complete inventory from the source repo — no invented additions.
 
-## This skill has two modes
-This package now covers two jobs — see `SKILL.md` for full routing:
-1. **Apply Flowente's own brand** to any asset requested for Flowente (UI, slides, copy, image-gen prompts). Read `prompts/BRAND-SYSTEM-PROMPT.md`.
-2. **Generate a new, unrelated brand** from a reference the user provides (image, moodboard, text). Read `prompts/SKILL-BRAND-GENERATOR.md`. This mode asks onboarding questions about the brand's purpose and tone of voice whenever the reference doesn't make them clear — it does not guess these.
+## Scope of this package
+One job: **apply Flowente's own brand** to any asset requested for Flowente (UI, slides, copy, image-gen prompts). Read `prompts/BRAND-SYSTEM-PROMPT.md`; `SKILL.md` has the working order.
+
+Generating a *new, unrelated* brand from a reference is a separate skill: **`brand-forge`**. It lived here as "Mode B" until it was split out, so that it could be distributed to clients without carrying Flowente's own material with it.
 
 **Out of scope:** social media post templates/dimensions are explicitly excluded from this skill.
 
@@ -48,7 +48,7 @@ This package now covers two jobs — see `SKILL.md` for full routing:
 - `guidelines/` — specimen cards (colors, type, foundations incl. grid, brand)
 - `ui_kits/website/` — full homepage recreation (`index.html`, light/dark toggle)
 - `assets/` — logo, wordmark, favicon
-- `prompts/` — `BRAND-SYSTEM-PROMPT.md` (apply mode) and `SKILL-BRAND-GENERATOR.md` (generate-from-reference mode)
+- `prompts/BRAND-SYSTEM-PROMPT.md` — self-contained system prompt for applying the brand
 - `github.md` — source repo association · `SKILL.md` — agent skill entry point
 
 ## Caveats
